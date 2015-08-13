@@ -1,5 +1,15 @@
 #!/bin/bash
 
+#Player detection
+PLATFORM="`uname`"
+echo $PLATFORM
+if [[ "$PLATFORM" == "Linux" ]]; then
+PLAYER=mplayer
+else
+PLAYER=afplay
+fi
+echo $PLAYER
+
 usage()
 {
     echo "usage: fleabuild options:<f|d|h>"
@@ -36,7 +46,7 @@ then
    exit
 fi
 
-afplay $audiotarget & fleapid=$! 
+$PLAYER $audiotarget & fleapid=$! 
 trap 'kill $fleapid' EXIT HUP TERM INT
 
 time -p sh -c 'cmake .. && make'

@@ -2,7 +2,7 @@
 
 usage()
 {
-    echo "usage: fleabiuld options:<f|d|h>"
+    echo "usage: fleabuild options:<f|d|h>"
 }
 
 while getopts ":f:h:?:d:" opt; do
